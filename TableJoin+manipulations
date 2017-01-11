@@ -1,0 +1,18 @@
+library(dplyr)
+library(data.table)
+
+TableA <- read.csv("C:/Filepath/TableA.csv")
+TableB <- read.csv("C:/Filepath/TableB.csv")
+
+TableA <- setnames(County, old = c('Latitude', 'Longitude'), new = c('Longitude', 'Latitude'))  
+##Use to change field names
+
+Join <- left_join(TableA, TableB, by = c("FIPSCode" = "GEOID")) 
+##Using Census example here. See right_join, full_join, etc in R help for desc.
+
+SE_USA<- filter(Join, Join$STATEFP == 12 | Join$STATEFP == 13 | Join$STATEFP == 37 | Join$STATEFP == 45)
+##filter by value of a field (s)
+
+write.csv(Join, file = "C:/Filepath/TableC.csv")
+write.csv(SE_USA, file = "C:/Filepath/TableD.csv")
+##creates new CSV documents of outputs
