@@ -1,5 +1,6 @@
 library(dplyr)
 library(data.table)
+##use install.packages() if these extensions are not already installed
 
 TableA <- read.csv("C:/Filepath/TableA.csv")
 TableB <- read.csv("C:/Filepath/TableB.csv")
